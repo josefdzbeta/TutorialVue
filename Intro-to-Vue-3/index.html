@@ -19,35 +19,35 @@
         <div class="product-container">
           <div v-show="stock>0" class="product-image">
             <a :href="url">
-              <img :src="imagen" :title="tooltip" />
+              <img :src="image" :title="tooltip" :class="{ 'out-of-stock-img': !enStock }" />
             </a>
           </div>
           <div class="product-info">
-            <h1>{{ producto}}</h1>
-            <p>{{ descripcion }}</p>
+            <h1>{{title}}</h1>
+            <p>{{descripcion}}</p>
             <p v-if="oferta">
-              En oferta: compra un calcetín y llévate un zapato
+              {{enOferta}}
             </p>
             <p v-if="stock>5">Disponible</p>
             <p v-else-if="stock>0">Ultimas unidades</p>
             <p v-else>No disponible</p>
             <ul>
-              <li v-for="detalle in detalles"> {{detalle}}</li>
+              <li v-for="detalle in detalles"> {{detalle}} </li>
             </ul>
             <ul>
-             <li v-for="talla in tallas" :key="talla.id" class="inline">{{talla.tamanyo}}</li> 
+             <li v-for="talla in tallas" :key="talla.id" class="inline">&nbsp;{{talla.tamanyo}}&nbsp;</li> 
             </ul>
+            <div 
+              v-for="(variante,index) in variantes" 
+              :key="variante.id" 
+              @mouseover="actualizarVariante(index)"
+              class="color-circle" 
+              :style="{ backgroundColor: variante.color}">
+            </div>
           </div>
-          <div 
-            v-for="variante in variantes" 
-            :key="variante.id" 
-            @mouseover="actualizarImagen(variante.image)"
-            class="color-circle" 
-            :style="{ backgroundColor: variante.color}">
-          </div>
+          <button class="button" :class="{disabledButton: !stock }" :disabled="!stock" @click="anyadirAlCarrito">Comprar</button>
+          <button class="button" @click="borrarCarrito">Quitar </button>
         </div>
-        <button class="button" @click="anyadirAlCarrito">Comprar</button>
-        <button class="button" @click="borrarCarrito">Quitar </button>
       </div>
     <!-- Import Js -->
     <script src="./main.js"></script>
