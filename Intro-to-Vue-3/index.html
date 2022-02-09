@@ -12,7 +12,7 @@
     <div id="app">
       <h1>{{ producto}}</h1>
       <p>{{ descripcion }}</p>
-      <div class="cart">{{unidades}}</div>
+      <div class="cart">Carrito({{unidades}})</div>
       <p v-if="stock>5">Disponible</p>
       <p v-else-if="stock>0">Ultimas unidades</p>
       <p v-else>No disponible</p>
@@ -24,12 +24,15 @@
           <img :src="imagen" :title="tooltip" />
         </a>
       </div>
-      <button class="button" v-on:click=unidades++>Comprar</button>
+      <button class="button" @click="anyadirAlCarrito">Comprar</button>
+      <button class="button" @click="borrarCarrito">Quitar </button>
       <p v-if="oferta">
-        En oferta, compra un calcetín y llévate un zapato
+        En oferta: compra un calcetín y llévate un zapato
       </p>
-      <div v-for="color in variantes">{{color.color}}</div>
-      <div v-for="(color, variantes) in variantes" :key="color.ref">{{color}}</div>
+      <div v-for="variante in variantes" :key="variante.id" v-on:mouseover="cambiarImagen(variante.image)" class="color-circle" :style="backgroundColor: variante.color">{{variante.color}} </div>
+      
+      <div v-for="talla in tallas" :key="talla.id">{{talla.tamanyo}}</div>
+      
     </div>
     <!-- Import Js -->
     <script src="./main.js"></script>
