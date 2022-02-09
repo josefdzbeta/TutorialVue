@@ -4,7 +4,14 @@ body {
   font-family: tahoma;
   color: #282828;
 }
-
+.texto{
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+}
+.inline{
+  display: inline-block;
+}
 .button {
   margin: 30px;
   background-color: #39495c;

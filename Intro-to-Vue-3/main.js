@@ -6,7 +6,7 @@ const app = Vue.createApp({
     data() {
         return {
             producto: 'Calcetines',
-            descripcion: 'de puro hilo de humo',
+            descripcion: 'De puro hilo de humo',
             imagen: 'assets/images/socks_blue.jpg',
             tooltip: 'Sin agujeros',
             url: 'https://es.wikipedia.org/wiki/Calcet%C3%ADn',
@@ -34,8 +34,8 @@ const app = Vue.createApp({
                 this.unidades--
             }
         },
-        cambiarImagen(varianteImage){
-            this.image = varianteImage
+        actualizarImagen(varianteImage){
+            this.imagen = varianteImage
         }
     }
 })
