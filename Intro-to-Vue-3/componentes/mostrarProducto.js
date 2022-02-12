@@ -65,12 +65,11 @@ app.component('mostrar-producto', {
   },
   methods: {
     anyadirAlCarrito() {
-      this.unidades++
+      this.$emit('anyadir-al-carrito', this.variantes[this.varianteSeleccionada].id)
     },
     borrarCarrito() {
-      if (this.unidades >= 1) {
-        this.unidades--
-      }
+      
+      this.$emit('borrar-del-carrito', this.variantes[this.varianteSeleccionada].id)
     },
     actualizarVariante(index) {
       this.varianteSeleccionada = index

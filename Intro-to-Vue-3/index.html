@@ -13,8 +13,8 @@
   <body>
     <div id="app">
       <div class="nav-bar texto">Bienvenido a los Yupi Calcetines</div>
-      <div class="cart">Carrito({{unidades}})</div>
-        <mostrar-producto :premium="premium"></mostrar-producto>
+      <div class="cart">Carrito({{unidades.length}})</div>
+        <mostrar-producto :premium="premium" @anyadir-al-carrito="actualizarCarrito" @borrar-del-carrito="removerCarrito"></mostrar-producto>
     </div>
     <!-- Importar Js -->
     <script src="./main.js"></script>

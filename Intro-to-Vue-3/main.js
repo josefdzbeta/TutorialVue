@@ -3,12 +3,22 @@
 const app = Vue.createApp({
     data() {
         return {
-            unidades: 0,
+            unidades: [],
             premium: true
         }
            
     },
-    methods: {}
+    methods: {
+        actualizarCarrito(id){
+            this.unidades.push(id)
+        },
+        removerCarrito(id){
+            const index = this.unidades.indexOf(id)
+                if (index > -1){
+                    this.unidades.splice(index,1)
+                }
+        }
+    }
     
 })
 
