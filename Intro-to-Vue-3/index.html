@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8" />
-    <title>Vue Mastery</title>
+    <title>Calcetines Wachipirulis</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
@@ -14,43 +14,14 @@
     <div id="app">
       <div class="nav-bar texto">Bienvenido a los Yupi Calcetines</div>
       <div class="cart">Carrito({{unidades}})</div>
-
-      <div class="product-display">
-        <div class="product-container">
-          <div v-show="stock>0" class="product-image">
-            <a :href="url">
-              <img :src="image" :title="tooltip" :class="{ 'out-of-stock-img': !enStock }" />
-            </a>
-          </div>
-          <div class="product-info">
-            <h1>{{title}}</h1>
-            <p>{{descripcion}}</p>
-            <p v-if="oferta">
-              {{enOferta}}
-            </p>
-            <p v-if="stock>5">Disponible</p>
-            <p v-else-if="stock>0">Ultimas unidades</p>
-            <p v-else>No disponible</p>
-            <ul>
-              <li v-for="detalle in detalles"> {{detalle}} </li>
-            </ul>
-            <ul>
-             <li v-for="talla in tallas" :key="talla.id" class="inline">&nbsp;{{talla.tamanyo}}&nbsp;</li> 
-            </ul>
-            <div 
-              v-for="(variante,index) in variantes" 
-              :key="variante.id" 
-              @mouseover="actualizarVariante(index)"
-              class="color-circle" 
-              :style="{ backgroundColor: variante.color}">
-            </div>
-          </div>
-          <button class="button" :class="{disabledButton: !stock }" :disabled="!stock" @click="anyadirAlCarrito">Comprar</button>
-          <button class="button" @click="borrarCarrito">Quitar </button>
-        </div>
-      </div>
-    <!-- Import Js -->
+        <mostrar-producto :premium="premium"></mostrar-producto>
+    </div>
+    <!-- Importar Js -->
     <script src="./main.js"></script>
+    
+    <!-- Importar Componente -->
+    <script src="componentes/mostrarProducto.js"></script>
+    <script src="componentes/detalleProductos.js"></script>
   </body>
 
 </html>
