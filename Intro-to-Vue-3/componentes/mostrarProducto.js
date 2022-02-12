@@ -40,6 +40,8 @@ app.component('mostrar-producto', {
         <button class="button" :class="{disabledButton: !enStock }" :disabled="!enStock" @click="anyadirAlCarrito">Comprar</button>
         <button class="button" @click="borrarCarrito">Quitar </button>
       </div>
+      <lista-review v-if="reviews.length" :reviews="reviews"></lista-review>
+      <review-formulario @review-enviada="anyadirReview"></review-formulario>
     </div>`,
   data() {
     return {
@@ -51,7 +53,8 @@ app.component('mostrar-producto', {
       url: 'https://es.wikipedia.org/wiki/Calcet%C3%ADn',
       //stock: false,
       oferta: true,
-      detalles: ['50% algodón', '30% lana', '20% polyester'],
+      reviews: [],
+      detalles: ['50% Algodón', '30% Lana', '20% Polyester'],
       variantes: [
         { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', cantidad: 50 },
         { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', cantidad: 0 },
@@ -73,6 +76,9 @@ app.component('mostrar-producto', {
     },
     actualizarVariante(index) {
       this.varianteSeleccionada = index
+    },
+    anyadirReview(review){
+      this.reviews.push(review)
     }
   },
   computed: {
